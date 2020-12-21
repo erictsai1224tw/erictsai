@@ -3,6 +3,8 @@
 
 作業網址: [https://hackmd.io/@chtsai/2020DS-homework-3](https://hackmd.io/@chtsai/2020DS-homework-3)
 
+github: [https://github.com/erictsai1224tw/erictsai/tree/DS/priority_queue](https://github.com/erictsai1224tw/erictsai/tree/DS/priority_queue)
+
 **此pq需要的節點結構:**
 ```c
 typedef struct HeapType {
