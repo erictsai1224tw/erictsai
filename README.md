@@ -28,7 +28,7 @@ typedef struct PQ {
 外部無法存取這些函式，僅供內部使用
 
 ### 取得陣列指定index的位置
-```c=
+```c
 static int *getElements_site(PQ_t *pq, int elementSize, int index)
 {
     void *temp = pq->heap.elements;
@@ -38,7 +38,7 @@ static int *getElements_site(PQ_t *pq, int elementSize, int index)
 ```
 
 ### 建立heap
-```c=
+```c
 static void createHeap(Heap_t *heap, int elementSize, int Size)
 {
     heap->numElements = 0;
@@ -47,7 +47,7 @@ static void createHeap(Heap_t *heap, int elementSize, int Size)
 ```
 
 ### swap: 利用memcpy交換元素
-```c=
+```c
 static void swap(void *elementA, void *elementB, int elementSize)
 {
     int *temp = (int *)malloc(sizeof(char) * elementSize);
@@ -61,7 +61,7 @@ static void swap(void *elementA, void *elementB, int elementSize)
 ```
 
 ### ReheapDown
-```c=
+```c
 static void ReheapDown(PQ_t *pq, int root, int bottom) 
 {
     int leftchild = root * 2 + 1;
@@ -113,7 +113,7 @@ static void ReheapDown(PQ_t *pq, int root, int bottom)
 ```
 
 ### ReheapUp
-```c=
+```c
 static void ReheapUp(PQ_t *pq, int root, int bottom)
 {
     int parent;
@@ -137,7 +137,7 @@ static void ReheapUp(PQ_t *pq, int root, int bottom)
 
 ### Create Priority Queue
 針對結構內部函數進行initialize
-```c=
+```c
 void createPQ(PQ_t *pq, H_class pqClass, int elementSize, int maxSize, int (*compare)(void *elementA, void *elementB))
 //initialize priorty queue
 {
@@ -151,7 +151,7 @@ void createPQ(PQ_t *pq, H_class pqClass, int elementSize, int maxSize, int (*com
 
 ### Enqueue
 將元素插入到priority queue中
-```c=
+```c
 int Enqueue(PQ_t *pq, void *elementA) /* add an element into PQ */
 {
     pq->heap.numElements++;
@@ -163,7 +163,7 @@ int Enqueue(PQ_t *pq, void *elementA) /* add an element into PQ */
 ```
 
 ### IsEmpty
-```c=
+```c
 int IsEmpty(PQ_t *pq) /* return 0: not empty, 1: empty*/
 {
     return (pq->heap.numElements == 0);
@@ -171,7 +171,7 @@ int IsEmpty(PQ_t *pq) /* return 0: not empty, 1: empty*/
 ```
 
 ### IsFull
-```c=
+```c
 int IsFull(PQ_t *pq) /* return 0: not full, 1:full */
 {
     return (pq->maxSize == pq->heap.numElements);
@@ -179,7 +179,7 @@ int IsFull(PQ_t *pq) /* return 0: not full, 1:full */
 ```
 
 ### Dequeue
-```c=
+```c
 void *Dequeue(PQ_t *pq) /*delete an element from PQ */
 {
     memcpy(getElements_site(pq, pq->elementSize, 0),
@@ -192,7 +192,7 @@ void *Dequeue(PQ_t *pq) /*delete an element from PQ */
 
 ## Demo
 以下為自行宣告的一個結構，並建立一個結構陣列，且對結構內的值進行初始值設定
-```c=
+```c
 typedef struct myElement
 {
     char ID[10];
@@ -213,7 +213,7 @@ student_t node[6] = {
 
 ### 建立比較函式及印出函式
 使用者須自建，並傳入priority queue library中 (比較函式)
-```c=
+```c
 int compareSci(void *elementA, void *elementB)
 {
     int sciA = ((student_t *)elementA)->sci;
@@ -243,7 +243,7 @@ void print(PQ_t *pq)
 
 ### 採用minheap排列
 root為最小值，並用"sci"此欄位作為比較大小進行排序
-```c=
+```c
 PQ_t maxPQ;
 
 createPQ(&maxPQ, MINHEAP, sizeof(student_t), 100, compareSci);
@@ -271,7 +271,7 @@ Dequeue(&maxPQ);
 
 ### 採用MAXheap排列
 root為最小值，並用"sci"此欄位作為比較大小進行排序
-```c=
+```c
 PQ_t maxPQ;
 
 createPQ(&maxPQ, MAXHEAP, sizeof(student_t), 100, compareSci);
