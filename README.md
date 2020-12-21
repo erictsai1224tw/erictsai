@@ -5,6 +5,9 @@
 
 github: [https://github.com/erictsai1224tw/erictsai/tree/DS/priority_queue](https://github.com/erictsai1224tw/erictsai/tree/DS/priority_queue)
 
+HACKMD:
+[https://hackmd.io/@erictsai1224tw/Priority_Queue_library](https://hackmd.io/@erictsai1224tw/Priority_Queue_library)
+
 **此pq需要的節點結構:**
 ```c
 typedef struct HeapType {
