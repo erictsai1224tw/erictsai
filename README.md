@@ -2,7 +2,7 @@
 
 作業網址: [https://hackmd.io/@chtsai/2020DS-homework-4](https://hackmd.io/@chtsai/2020DS-homework-4)
 
-github: [https://github.com/erictsai1224tw/erictsai/tree/DS/AVL_Tree](https://github.com/erictsai1224tw/erictsai/tree/DS/AVL_Tree)
+hackmd: [https://hackmd.io/@erictsai1224tw/AVL_tree](https://hackmd.io/@erictsai1224tw/AVL_tree)
 
 **AVL Tree 需要的節點結構:**
 ```c
