@@ -2,6 +2,8 @@
 
 作業網址: [https://hackmd.io/@chtsai/2020DS-homework-4](https://hackmd.io/@chtsai/2020DS-homework-4)
 
+github: [https://github.com/erictsai1224tw/erictsai/tree/DS/AVL_Tree](https://github.com/erictsai1224tw/erictsai/tree/DS/AVL_Tree)
+
 **AVL Tree 需要的節點結構:**
 ```c
 typedef struct avl_node
@@ -27,7 +29,9 @@ static int height(avl_node_t *);
 static int balanceFactor(avl_node_t *);
 ```
 ## 前言
-其實 AVL tree 就是 Binary Search Tree的一種，更精確地來說，其實就是先按BST的方式操作後，再依據每一點的balance factor來看要怎麼整理(RR, LL, RL, LR)。這棵樹最猛的地方就是，她維持了BST的特性，你會發現一顆整理前(也就是BST)與整理後(AVL Tree)，兩者的in order順序印出來是一樣的。在各種情況下，時間複雜度都是logN，以及透過整理，讓這棵樹不會長歪，同時資料的排序也是維持跟BST一樣，真的不知道當初是怎麼想到這種資料結構的，真神人也。
+其實 AVL tree 就是 Binary Search Tree的一種，更精確地來說，其實就是先按BST的方式操作後，再依據每一點的balance factor來看要怎麼整理(RR, LL, RL, LR)。  
+這棵樹最猛的地方就是，她維持了BST的特性，你會發現一顆整理前(也就是BST)與整理後(AVL Tree)，兩者的in order順序印出來是一樣的。  
+在各種情況下，時間複雜度都是logN，以及透過整理，讓這棵樹不會長歪，同時資料的排序也是維持跟BST一樣，真的不知道當初是怎麼想到這種資料結構的，真神人也。
 
 ## static函式 
 外部無法存取這些函式，僅供內部使用
@@ -138,21 +142,21 @@ static void update_node_height(avl_node_t *node)
 ```
 
 ### Balance Factor
-你各位阿，AVL Tree一直強調的就是要怎麼不讓這棵樹長歪，就是要透過balance factor來修剪!
-爾後按此要領操作，瞭不了解?
+你各位阿，AVL Tree一直強調的就是要怎麼不讓這棵樹長歪，就是要透過balance factor來修剪!  
+爾後操作按此要領，瞭不了解?
 ```c
 static int balanceFactor(avl_node_t *node)
 {
     return height(node->left) - height(node->right);
 }
 ```
-說的好像很難一樣，其實就這樣......
+其實就這樣而已:)
 
 ## 使用者可以呼叫使用的函式
 ### Insert
 在第4行可以看到，先用BST那邊的插入函式進行插入的動作
 之後更新每個點的高度，以及balance factor
-接著若在root有發現bf>1或bf<-1的情形，採用recursive的方式，往下尋找，若尋找到-1<bf<1的點時，就會停止，且上一層的bf若不在合法範圍內，就會進到下方的整理區(LL, RR, LR, RL)，然後這樣一直往上，就會沿路整理，自然頂點root的bf就能落在合法區間內。
+接著若在root有發現bf>1或bf<-1的情形，採用recursive的方式，往下尋找，若尋找到-1<bf<1的點時，就會停止，且上一層的bf若不在合法範圍內，就會進到下方的整理區(LL, RR, LR, RL)，這樣一直往上，就會沿路整理，自然頂點root的bf就能落在合法區間內。
 ```c=
 avl_node_t *insert(void *element, avl_node_t *root, int (*compare)(void *elementA, void *elementB))
 {
@@ -213,7 +217,7 @@ avl_node_t *insert(void *element, avl_node_t *root, int (*compare)(void *element
 ```
 
 ### Delete
-跟BST一樣刪法，刪完之後檢查有沒有長歪，長歪的話就進行修剪
+跟BST一樣刪法，刪完之後檢查有沒有長歪，長歪的話就進行修剪  
 這邊下方決定要如何調整(如LL與LR)，是用node->left該點的傾斜情形(bf)，來決定如何調整
 ```c=
 avl_node_t *Delete(void *element, avl_node_t *node, int (*compare)(void *, void *))
@@ -257,9 +261,7 @@ avl_node_t *Delete(void *element, avl_node_t *node, int (*compare)(void *, void 
 ```
 
 ### Find
-沒錯，find過程完全跟BST一樣，因為只是找點沒有動到結構，就不需特地整理了
-你說如果原來的樹長的歪歪的，要不要用find幫他整理?
-我是覺得我們真的不用在這種地方發揮大愛精神......
+沒錯，find過程完全跟BST一樣，因為只是找點沒有動到結構，就不需特地整理了  
 如果想要幫他整理，那就用insert那邊，給他插入NULL(element欄位)就好了
 ```c
 avl_node_t *find(void *element, avl_node_t *node, int (*compare)(void *elementA, void *elementB))
