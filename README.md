@@ -12,7 +12,7 @@ typedef struct avl_node
 } avl_node_t;
 ```
 **實作的函式**
-```c
+```c=
 avl_node_t *insert(void *element, avl_node_t *root, int (*compare)(void *, void *));
 avl_node_t *Delete(void *element, avl_node_t *root, int (*compare)(void *, void *));
 avl_node_t *find(void *element, avl_node_t *root, int (*compare)(void *, void *));
