@@ -336,9 +336,12 @@ void print(void *element)
 
 ### 採用BST的印出結果
 樹狀圖中的點都是數學成績
-
 ![](https://i.imgur.com/oJklUhx.png)
-```graphviz
+```
+![Alt text](https://g.gravizo.com/source/custom_mark10?https%3A%2F%2Fraw.githubusercontent.com%2FTLmaK0%2Fgravizo%2Fmaster%2FREADME.md)
+<details> 
+<summary></summary>
+custom_mark10
 digraph Tree{
     graph[ordering=out]
     null0 [shape=point]
@@ -350,11 +353,17 @@ digraph Tree{
     30 -> 25
     30 -> null0
 }
+custom_mark10
+</details> 
 ```
 
 ### 採用AVL Tree的印出結果
 ![](https://i.imgur.com/grvu3cs.png)
-```graphviz
+```
+![Alt text](https://g.gravizo.com/source/custom_mark10?https%3A%2F%2Fraw.githubusercontent.com%2FTLmaK0%2Fgravizo%2Fmaster%2FREADME.md)
+<details> 
+<summary></summary>
+custom_mark10
 digraph Tree{
     graph[ordering=out]
     null0 [shape=point]
@@ -365,7 +374,10 @@ digraph Tree{
     20 -> 25
     40 -> null0
     40 -> 60
+   
 }
+custom_mark10
+</details> 
 ```
 
 ok，這大概就是這學期資料結構的最後一個作業了，拜拜~
